@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferdinand De Leon | Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Ferdinand B. De Leon | Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3b82f6;
@@ -14,12 +14,14 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #00f2fe;
+            --success: #10b981;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -36,8 +38,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(15, 23, 42, 0.9);
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -45,7 +47,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px; }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); letter-spacing: -0.5px; }
 
         .nav-links {
             display: flex;
@@ -55,7 +57,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
-            margin-left: 2rem;
+            margin-left: 1.5rem;
             font-weight: 500;
             transition: 0.3s;
             font-size: 0.9rem;
@@ -63,7 +65,6 @@
 
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hamburger Menu Icon */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -71,6 +72,7 @@
             gap: 5px;
             background: transparent;
             border: none;
+            padding: 5px;
         }
 
         .menu-toggle span {
@@ -81,43 +83,127 @@
             transition: 0.3s;
         }
 
+        /* HERO SECTION */
         .hero {
-            min-height: 90vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 4rem 5%;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            justify-content: space-between;
+            padding: 3.5rem 5%;
+            background: linear-gradient(135deg, #070b19 0%, #0f172a 100%);
+            gap: 2.5rem;
+            flex-wrap: wrap-reverse;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(0, 242, 254, 0.15) 0%, transparent 45%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
         }
 
         .hero h1 { 
-            font-size: clamp(2.2rem, 7vw, 4.5rem); 
+            font-size: clamp(2rem, 6vw, 3.8rem); 
             font-weight: 800; 
-            margin-bottom: 1.5rem; 
-            line-height: 1.1;
+            margin-bottom: 0.8rem; 
+            line-height: 1.15;
             background: linear-gradient(to right, #fff, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p { 
-            font-size: clamp(1rem, 2vw, 1.2rem); 
+            font-size: clamp(0.95rem, 2vw, 1.1rem); 
             color: var(--text-muted); 
-            max-width: 700px; 
-            margin-bottom: 2.5rem;
+            max-width: 650px; 
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-image-wrapper {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--card-bg);
         }
 
         .hero-actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .btn {
-            padding: 0.8rem 2rem;
+            padding: 0.75rem 1.5rem;
             background: var(--primary);
             color: white;
             text-decoration: none;
@@ -128,46 +214,46 @@
             border: none;
             cursor: pointer;
             text-align: center;
+            font-size: 0.9rem;
         }
 
         .btn:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            margin-left: 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--text-main);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         .skills-tag-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 2rem;
-            max-width: 800px;
+            gap: 6px;
+            margin-top: 1.2rem;
+            max-width: 700px;
         }
 
         .skill-tag {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
 
         .projects-section, .resume-section {
-            padding: 80px 5%;
+            padding: 60px 5%;
         }
 
         .resume-section {
@@ -177,30 +263,35 @@
         }
 
         .section-title {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
+            align-items: flex-start;
+            flex-direction: column;
             gap: 1rem;
         }
 
-        .section-title h2 { font-size: clamp(2rem, 5vw, 2.5rem); }
+        .section-title h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
 
         .filter-group {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .filter-btn {
-            background: transparent;
+            background: var(--card-bg);
             border: 1px solid #334155;
             color: var(--text-muted);
-            padding: 8px 20px;
+            padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 0.82rem;
+            font-weight: 500;
+            flex: 1;
+            text-align: center;
         }
 
         .filter-btn.active {
@@ -211,16 +302,16 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.3s ease;
             display: flex;
             flex-direction: column;
             text-decoration: none;
@@ -228,110 +319,102 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .card .company {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             color: var(--primary);
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
-        .card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .card .role-badge {
+        .card h3 { font-size: 1.15rem; margin: 0.3rem 0; }
+        
+        .role-badge {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             background: rgba(59, 130, 246, 0.1);
             color: var(--accent);
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 4px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            width: fit-content;
         }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
-        .tech-list { display: flex; gap: 8px; flex-wrap: wrap; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem; flex-grow: 1; }
+
+        .tech-list { display: flex; gap: 6px; flex-wrap: wrap; }
         .tech-list span {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             background: #0f172a;
             color: var(--primary);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 4px;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        /* Resume Content Styling */
         .resume-container {
             background: var(--card-bg);
-            padding: clamp(1.5rem, 4vw, 3rem);
-            border-radius: 20px;
+            padding: 1.2rem;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.08);
         }
 
         .resume-header {
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .resume-header h3 { font-size: 1.8rem; color: #fff; }
-        .resume-header p { color: var(--text-muted); font-size: 0.95rem; }
+        .resume-header h3 { font-size: 1.5rem; color: #fff; }
+        .resume-header p { color: var(--text-muted); font-size: 0.9rem; }
 
-        .resume-block {
-            margin-bottom: 2.5rem;
-        }
+        .resume-block { margin-bottom: 2rem; }
 
         .resume-block h4 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             border-left: 3px solid var(--primary);
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
-        .resume-item {
-            margin-bottom: 1.5rem;
-        }
+        .resume-item { margin-bottom: 1.5rem; }
 
         .resume-item-title {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 0.2rem;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
         }
 
         .resume-item-company {
             color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
         }
 
         .resume-item ul {
             list-style-type: disc;
-            padding-left: 20px;
+            padding-left: 18px;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
         }
 
-        .resume-item ul li {
-            margin-bottom: 0.3rem;
-        }
+        .resume-item ul li { margin-bottom: 0.3rem; }
 
         footer {
-            padding: 80px 5%;
+            padding: 50px 5%;
             text-align: center;
             background: #070b14;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -339,17 +422,29 @@
 
         .contact-box {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: clamp(2rem, 5vw, 4rem);
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Mobile Media Query Enhancements */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
+        @media (min-width: 768px) {
+            .menu-toggle { display: none; }
+            .hero-image-wrapper { flex: 0 0 260px; }
+            .profile-img-container { width: 220px; height: 220px; }
+            .section-title { flex-direction: row; align-items: flex-end; }
+            .filter-group { width: auto; }
+            .filter-btn { flex: unset; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+            .resume-container { padding: 2.5rem; }
+            .resume-header { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+            .resume-item-title { flex-direction: row; justify-content: space-between; }
+            .contact-box { padding: 3rem 2rem; }
+        }
 
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
             .nav-links {
                 position: absolute;
                 top: 100%;
@@ -363,98 +458,91 @@
                 transition: max-height 0.3s ease-in-out;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
-
             .nav-links.active {
-                max-height: 250px;
-                padding: 1.5rem 0;
+                max-height: 220px;
+                padding: 1.2rem 0;
             }
-
-            .nav-links a {
-                margin: 0.75rem 0;
-                font-size: 1rem;
-            }
-
-            .grid { 
-                grid-template-columns: 1fr; 
-            }
-
-            .section-title { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                text-align: left; 
-            }
-
-            .resume-header {
-                flex-direction: column;
-            }
+            .nav-links a { margin: 0.6rem 0; font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">FDL.DEV</div>
+        <div class="logo">FERDINAND.DEV</div>
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <div class="nav-links" id="nav-links">
-            <a href="#work">Experience</a>
+            <a href="#work">Projects</a>
             <a href="#resume">Resume</a>
-            <a href="https://ferdydeleon.github.io/my-portfolio/#work" target="_blank">Live Portfolio</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Ferdinand B. De Leon</h1>
-        <p>Expert Software Engineer building scalable applications with 7+ years of experience. Specialist in <b>React Ecosystems</b> and <b>Modern UI Frameworks</b>.</p>
-        
-        <div class="skills-tag-container">
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">React Native</span>
-            <span class="skill-tag">PHP / Laravel</span>
-            <span class="skill-tag">Material UI (MUI)</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Bootstrap</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Socket.io</span>
-            <span class="skill-tag">WordPress</span>
+        <div class="hero-content">
+            <div class="status-badge">
+                <span class="status-dot"></span> Available for Hire
+            </div>
+            <h1>Ferdinand B. De Leon</h1>
+            <p>Results-driven <b>Software Engineer</b> with 7+ years of expertise in architecting scalable web applications, real-time systems, and cross-platform mobile solutions.</p>
+            
+            <div class="hero-actions">
+                <a href="#work" class="btn">Explore Projects</a>
+                <a href="#resume" class="btn btn-outline">View Resume</a>
+            </div>
+
+            <div class="skills-tag-container">
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">React Native</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">PHP / Laravel</span>
+                <span class="skill-tag">CodeIgniter</span>
+                <span class="skill-tag">WordPress</span>
+                <span class="skill-tag">Material UI</span>
+                <span class="skill-tag">Tailwind CSS</span>
+                <span class="skill-tag">Socket.io</span>
+                <span class="skill-tag">MySQL</span>
+            </div>
         </div>
 
-        <div class="hero-actions" style="margin-top: 3rem;">
-            <a href="#work" class="btn">View My Portfolio</a>
-            <a href="#resume" class="btn btn-outline">View Resume</a>
+        <div class="hero-image-wrapper">
+            <div class="profile-img-container">
+                <img src="myID.png" alt="Ferdinand B. De Leon Profile Picture">
+            </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+    <!-- PROJECTS SECTION (INCLUDES SUPPLEMENT HUB) -->
     <section class="projects-section" id="work">
         <div class="section-title">
             <div>
-                <h2 id="proj-count">Featured Work</h2>
-                <p style="color: var(--text-muted)">Selected projects from 2016 to 2026</p>
+                <h2>Featured Projects</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Selected Web & Mobile/System applications from previous works</p>
             </div>
             <div class="filter-group">
                 <button class="filter-btn active" onclick="filterData('all')">All</button>
-                <button class="filter-btn" onclick="filterData('web')">Web</button>
-                <button class="filter-btn" onclick="filterData('app')">Mobile/System</button>
+                <button class="filter-btn" onclick="filterData('web')">Web Platforms</button>
+                <button class="filter-btn" onclick="filterData('app')">Mobile & Systems</button>
             </div>
         </div>
 
         <div class="grid" id="project-grid"></div>
     </section>
 
-    <!-- RESUME VIEW SECTION -->
+    <!-- RESUME SECTION -->
     <section class="resume-section" id="resume">
         <div class="section-title">
             <div>
                 <h2>Professional Resume</h2>
-                <p style="color: var(--text-muted)">Comprehensive overview of background, work history, and technical proficiency</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Comprehensive work history and credentials</p>
             </div>
             <div>
-                <button class="btn" onclick="window.print()">Print / Save PDF</button>
+                <button class="btn" onclick="window.print()">Print / PDF</button>
             </div>
         </div>
 
@@ -462,10 +550,10 @@
             <div class="resume-header">
                 <div>
                     <h3>Ferdinand B. De Leon</h3>
-                    <p><b>Software Engineer | Full-Stack Developer</b> (React.js, Node.js, Laravel)</p>
+                    <p><b>Software Engineer | Full-Stack Developer</b></p>
                 </div>
                 <div>
-                    <p>📍 Echague, Isabela 3309, Philippines</p>
+                    <p>📍 Echague, Isabela 3309</p>
                     <p>📞 +63 927 263 8509</p>
                     <p>✉️ deleonferdinand30@gmail.com</p>
                 </div>
@@ -474,8 +562,8 @@
             <!-- Professional Summary -->
             <div class="resume-block">
                 <h4>Professional Summary</h4>
-                <p style="color: var(--text-muted);">
-                    Software Engineer with hands-on experience in web development, specializing in building scalable and responsive applications. Proficient in React.js, React Native, and PHP frameworks (CodeIgniter and Laravel). Skilled in front-end development using HTML, CSS, Bootstrap, Material UI, and Tailwind CSS. Familiar with Node.js, Express.js, and MySQL, with working knowledge of developing and maintaining dynamic web and WordPress-based applications.
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Accomplished <b>Software Engineer</b> with over 7 years of professional experience in full-stack web and mobile application development. Highly proficient in building high-performance, responsive systems using the <b>React Ecosystem</b> (React.js, React Native), Node.js, and robust PHP frameworks (<b>Laravel, CodeIgniter</b>). Proven expertise in developing real-time architectures via <b>Socket.io</b>, intuitive user interfaces with Material UI and Tailwind CSS, and secure backend databases using MySQL, alongside custom e-commerce solutions via WordPress.
                 </p>
             </div>
 
@@ -486,9 +574,9 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Web Developer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">August 2023 – September 15, 2026</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">August 2023 – Present</span>
                     </div>
-                    <div class="resume-item-company">Leon Gallery | Makati City</div>
+                    <div class="resume-item-company">Leon Gallery | Makati</div>
                     <ul>
                         <li>Specialized in front-end development and real-time web applications.</li>
                         <li>Designed and developed the gallery’s website and live auction system using React, Material UI, and Socket.IO to deliver responsive UI and seamless real-time bidding functionality.</li>
@@ -498,7 +586,7 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Web Programmer (Freelance)</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">September 2019 – January 2026</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">September 2019 – January 2026</span>
                     </div>
                     <div class="resume-item-company">Modern Global System Solution | Quezon City (Online Betting Web Application)</div>
                     <ul>
@@ -514,9 +602,9 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Software Engineer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">September 2019 – September 2022</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">September 2019 – September 2022</span>
                     </div>
-                    <div class="resume-item-company">Freelance / Project-based</div>
+                    <div class="resume-item-company">Freelance | Philippines</div>
                     <ul>
                         <li>Sales Management with Inventory using Laravel, Tailwind, and MySQL.</li>
                         <li>Online casino real-time web application using React.js, Socket.io, and Material UI.</li>
@@ -526,9 +614,9 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Part-Time Software Engineer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">August 2017 – August 2019</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">August 2017 – August 2019</span>
                     </div>
-                    <div class="resume-item-company">AceGadgetStore | Taguig (Carlos P. Garcia Service Road, Signal Village)</div>
+                    <div class="resume-item-company">AceGadgetStore | Taguig (Signal Village)</div>
                     <ul>
                         <li>Developed an inventory system with integrated sales management features to streamline business operations.</li>
                         <li>Built and maintained an e-commerce website for Ace Gadget Store, improving online presence and sales capability.</li>
@@ -538,22 +626,20 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Web Developer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">November 2018 – January 2019</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">November 2018 – January 2019</span>
                     </div>
-                    <div class="resume-item-company">NOW Corporation | Makati City (OPL Building, Legazpi Village)</div>
+                    <div class="resume-item-company">NOW Corporation | Makati City (OPL Building)</div>
                     <ul>
                         <li>Developed an online employee survey system using XPages (JSP) to streamline data collection and reporting.</li>
-                        <li>Customized the Judiciary email system to improve communication workflows.</li>
-                        <li>Enhanced IBM iNotes collaboration tools to support internal processes.</li>
-                        <li>Configured and customized meeting management features for better scheduling and coordination.</li>
-                        <li>Provided customer support and technical assistance to ensure system reliability and user satisfaction.</li>
+                        <li>Customized the Judiciary email system and enhanced IBM iNotes collaboration tools.</li>
+                        <li>Configured meeting management features and provided technical customer support.</li>
                     </ul>
                 </div>
 
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Software Engineer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">March 2017 – November 2018</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">March 2017 – November 2018</span>
                     </div>
                     <div class="resume-item-company">Trend Micro | Pasig City (The Rockwell Business Center)</div>
                     <ul>
@@ -564,13 +650,14 @@
 
                 <div class="resume-item">
                     <div class="resume-item-title">
-                        <span>Software Engineer (Part-Time / e-Ferm Business Solution)</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">Various Projects</span>
+                        <span>Software Engineer (Freelance / e-Ferm Business Solution)</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Various Projects</span>
                     </div>
-                    <div class="resume-item-company">Projects & Accomplishments</div>
+                    <div class="resume-item-company">e-Ferm Business Solution & Independent Freelance</div>
                     <ul>
+                        <li><b>Supplement Hub (supplementhub.com.ph):</b> Developed and launched an online store website using WordPress CMS for health and food supplements.</li>
                         <li><b>E-DTR:</b> Android biometric system using QR code with JavaScript and Node.js.</li>
-                        <li><b>Tipidkatidito.com & Supplementhub.com.ph:</b> Online store websites built using WordPress.</li>
+                        <li><b>Tipidkatidito.com:</b> Online store website built using WordPress.</li>
                         <li><b>Inventory System:</b> Built with Sale Management using PHP, Bootstrap, and JavaScript.</li>
                     </ul>
                 </div>
@@ -578,11 +665,11 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Programmer, Web Developer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">June 2016 – February 2017</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">June 2016 – February 2017</span>
                     </div>
                     <div class="resume-item-company">Global Pinoy Remittance Services | Quezon City</div>
                     <ul>
-                        <li>Developed Cash Card Applications, Incident Report Monitoring Management, Federal Logs Reports, Remittance Reports, Cebu Pacific UI, E-Loading Reports, Cagelco Reports, and Daily Incident Reports.</li>
+                        <li>Developed Cash Card Applications, Incident Report Monitoring, Federal Logs Reports, Remittance Reports, Cebu Pacific UI, E-Loading Reports, Cagelco Reports, and Daily Incident Reports.</li>
                         <li>Handled maintenance for all general corporate reports.</li>
                     </ul>
                 </div>
@@ -590,7 +677,7 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Programmer, Web Developer</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">November 2015 – February 2016</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">November 2015 – February 2016</span>
                     </div>
                     <div class="resume-item-company">NOW Corporation | Manila</div>
                     <ul>
@@ -605,14 +692,14 @@
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Bachelor of Science in Information Technology</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">2012 – 2016</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">2012 – 2016</span>
                     </div>
                     <div class="resume-item-company">Isabela State University</div>
                 </div>
                 <div class="resume-item">
                     <div class="resume-item-title">
                         <span>Bachelor of Science in Nursing</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">2006 – 2009</span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">2006 – 2009</span>
                     </div>
                     <div class="resume-item-company">Medical Colleges of Northern Philippines (Alimannao Hills, Peñablanca, Cagayan)</div>
                 </div>
@@ -648,16 +735,15 @@
     <footer id="contact">
         <div class="contact-box">
             <h2>Let's build something great.</h2>
-            <p style="margin: 0.5rem 0; color: var(--text-muted)">Echague, Isabela 3309, Philippines</p>
-            <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem;">+63 927 263 8509</p>
-            <p style="font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 2rem;">deleonferdinand30@gmail.com</p>
-            <!-- <a href="https://ferdydeleon.github.io/my-portfolio/#work" class="btn" target="_blank">View GitHub Portfolio</a> -->
+            <p style="margin: 0.4rem 0; color: var(--text-muted); font-size: 0.9rem;">Echague, Isabela 3309, Philippines</p>
+            <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.4rem;">+63 927 263 8509</p>
+            <p style="font-size: 1.1rem; color: var(--primary); font-weight: 700; margin-bottom: 1.2rem;">deleonferdinand30@gmail.com</p>
+            <a href="mailto:deleonferdinand30@gmail.com" class="btn">Send Me an Email</a>
         </div>
-        <p style="margin-top: 4rem; font-size: 0.8rem; color: #475569;">&copy; 2026 Ferdinand B. De Leon. Built with Passion & React.</p>
+        <p style="margin-top: 2.5rem; font-size: 0.75rem; color: #475569;">&copy; 2026 Ferdinand B. De Leon. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Mobile Menu Toggle Script
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinksContainer = document.getElementById('nav-links');
 
@@ -665,22 +751,22 @@
             navLinksContainer.classList.toggle('active');
         });
 
-        // Close menu when clicking a link on mobile
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinksContainer.classList.remove('active');
             });
         });
 
+        // Comprehensive Project Database including Supplement Hub & Previous Works
         const projects = [
             {
                 title: "Live Bidding Auction Platform",
                 role: "Front End & Mobile Engineer",
                 company: "Leon Gallery",
-                category: "hybrid",
-                desc: "Full-cycle development of a high-stakes auction ecosystem. Built the real-time web portal and cross-platform mobile application using Capacitor, featuring instant bidding synchronization via Socket.io.",
-                tech: ["React.js", "Capacitor", "Socket.IO", "Node.js", "Material UI"],
-                period: "2023 - 2026",
+                category: "web",
+                desc: "High-stakes digital art auction ecosystem. Features instant real-time bidding synchronization via Socket.io and responsive web layouts.",
+                tech: ["React.js", "Socket.IO", "Node.js", "Material UI"],
+                period: "2023 - Present",
                 link: "https://leon-gallery.com/"
             },
             {
@@ -688,29 +774,79 @@
                 role: "Front End Engineer",
                 company: "Modern Global System",
                 category: "web",
-                desc: "Developed a high-traffic betting platform and a comprehensive Admin Panel. Managed real-time game monitoring, user accounts, risk management, and detailed financial reporting dashboards.",
+                desc: "High-traffic online betting application with an enterprise-level admin panel for financial monitoring, risk control, and user management.",
                 tech: ["React.js", "Socket.io", "Material UI", "Node.js"],
                 period: "2019 - 2026",
                 link: "http://testadmin.marble6.live/login"
             },
             {
-                title: "Biyaya Animal Sanctuary Portal",
-                role: "Front End Engineer",
-                company: "Biyaya Animal Sanctuary",
+                title: "Supplement Hub E-Commerce Store",
+                role: "Freelance Web Developer",
+                company: "Supplement Hub",
                 category: "web",
-                desc: "Developed and maintained the official website for animal welfare. Implemented WordPress custom solutions for donation tracking, animal profiles, and community engagement.",
-                tech: ["WordPress", "PHP", "Elementor", "MySQL"],
-                period: "2024 - 2026",
-                link: "https://biyaya.ph/"
+                desc: "Custom-built e-commerce online store website utilizing WordPress CMS optimized for health and supplement product sales.",
+                tech: ["WordPress", "PHP", "WooCommerce", "MySQL"],
+                period: "Project-based",
+                link: "https://supplementhub.com.ph/"
             },
             {
-                title: "Sales & Inventory Management",
+                title: "Approver Monitoring Portal",
+                role: "Software Engineer",
+                company: "Trend Micro",
+                category: "web",
+                desc: "Enterprise web portal system built using MVC CodeIgniter to streamline approval tracking and internal workflows.",
+                tech: ["CodeIgniter", "PHP", "MVC", "MySQL"],
+                period: "2017 - 2018",
+                link: "#"
+            },
+            {
+                title: "GridHub Client Information Portal",
+                role: "Software Engineer",
+                company: "Trend Micro",
+                category: "web",
+                desc: "Centralized web portal designed to securely transmit client and application information packets using Node.js architecture.",
+                tech: ["Node.js", "JavaScript", "REST API"],
+                period: "2017 - 2018",
+                link: "#"
+            },
+            {
+                title: "E-DTR Biometric Mobile System",
+                role: "Mobile & System Engineer",
+                company: "e-Ferm Business Solution",
+                category: "app",
+                desc: "Android biometric attendance system leveraging QR code authentication seamlessly integrated with JavaScript and Node.js backend.",
+                tech: ["React Native", "Node.js", "JavaScript", "QR API"],
+                period: "Project-based",
+                link: "#"
+            },
+            {
+                title: "Sales & Inventory Management System",
                 role: "Full Stack Developer",
                 company: "AceGadgetStore",
                 category: "app",
-                desc: "Full-scale inventory management and E-commerce website for a gadget retail store. Developed both the client-facing store and the robust backend management system.",
-                tech: ["Laravel", "Tailwind", "MySQL", "PHP"],
+                desc: "Comprehensive inventory tracking software combined with POS sales management features and an active e-commerce storefront.",
+                tech: ["Laravel", "Tailwind CSS", "MySQL", "PHP"],
                 period: "2017 - 2019",
+                link: "#"
+            },
+            {
+                title: "Global Pinoy Remittance & Corporate Reports",
+                role: "Programmer & Web Developer",
+                company: "Global Pinoy Remittance Services",
+                category: "app",
+                desc: "Developed Cash Card applications, Incident Report Monitoring, Federal Logs, Remittance reports, Cebu Pacific UI, and general corporate reports.",
+                tech: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
+                period: "2016 - 2017",
+                link: "#"
+            },
+            {
+                title: "MMDA Traffic Mirror CMS",
+                role: "Web Developer",
+                company: "NOW Corporation",
+                category: "web",
+                desc: "Developed the MMDA Traffic Mirror project utilizing WordPress CMS for public monitoring and info dissemination.",
+                tech: ["WordPress", "PHP", "CMS"],
+                period: "2015 - 2016",
                 link: "#"
             }
         ];
@@ -724,9 +860,9 @@
                 card.href = item.link;
                 card.target = item.link === "#" ? "_self" : "_blank";
                 card.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px">
                         <span class="company">${item.company}</span>
-                        <span style="font-size:0.7rem; color:var(--text-muted)">${item.period}</span>
+                        <span style="font-size:0.68rem; color:var(--text-muted)">${item.period}</span>
                     </div>
                     <h3>${item.title}</h3>
                     <div class="role-badge">${item.role}</div>
@@ -734,8 +870,8 @@
                     <div class="tech-list">
                         ${item.tech.map(t => `<span>${t}</span>`).join('')}
                     </div>
-                    <div style="margin-top:1.5rem; font-size:0.8rem; font-weight:700; color:var(--primary)">
-                        ${item.link === "#" ? "Private Project" : "View Project →"}
+                    <div style="margin-top:1rem; font-size:0.78rem; font-weight:700; color:var(--primary)">
+                        ${item.link === "#" ? "Internal System" : "View Live Project →"}
                     </div>
                 `;
                 grid.appendChild(card);
@@ -745,11 +881,12 @@
         function filterData(cat) {
             const btns = document.querySelectorAll('.filter-btn');
             btns.forEach(b => b.classList.remove('active'));
-            if(event) event.target.classList.add('active');
+            event.target.classList.add('active');
+            
             if (cat === 'all') {
                 renderProjects(projects);
             } else {
-                const filtered = projects.filter(p => p.category === cat || p.category === 'hybrid');
+                const filtered = projects.filter(p => p.category === cat);
                 renderProjects(filtered);
             }
         }
