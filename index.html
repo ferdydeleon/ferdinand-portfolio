@@ -47,7 +47,25 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); letter-spacing: -0.5px; }
+        /* Responsive Logo Styling */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .logo-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: var(--text-main);
+        }
+        .logo-title {
+            font-size: 0.62rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
 
         .nav-links {
             display: flex;
@@ -83,7 +101,7 @@
             transition: 0.3s;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION WITH RESPONSIVE NAME FIX */
         .hero {
             position: relative;
             min-height: 85vh;
@@ -123,6 +141,7 @@
         .hero-content {
             flex: 1;
             min-width: 280px;
+            width: 100%;
         }
 
         .status-badge {
@@ -154,14 +173,17 @@
             100% { transform: scale(0.95); opacity: 0.8; }
         }
 
+        /* Responsive Name H1 to prevent breaking awkwardly on mobile */
         .hero h1 { 
-            font-size: clamp(2rem, 6vw, 3.8rem); 
+            font-size: clamp(1.8rem, 5.5vw, 3.8rem); 
             font-weight: 800; 
             margin-bottom: 0.8rem; 
             line-height: 1.15;
             background: linear-gradient(to right, #fff, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            word-break: normal;
+            overflow-wrap: break-word;
         }
 
         .hero p { 
@@ -469,7 +491,10 @@
 <body>
 
     <nav>
-        <div class="logo">FERDINAND.DEV</div>
+        <div class="logo-container">
+            <span class="logo-name">FERDINAND DE LEON</span>
+            <span class="logo-title">Software Engineer</span>
+        </div>
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -517,7 +542,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION (INCLUDES SUPPLEMENT HUB) -->
+    <!-- PROJECTS SECTION -->
     <section class="projects-section" id="work">
         <div class="section-title">
             <div>
@@ -757,7 +782,6 @@
             });
         });
 
-        // Comprehensive Project Database including Supplement Hub & Previous Works
         const projects = [
             {
                 title: "Live Bidding Auction Platform",
